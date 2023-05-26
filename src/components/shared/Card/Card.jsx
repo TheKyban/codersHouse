@@ -15,16 +15,6 @@ const Card = ({ img, heading, children }) => {
 
             {children}
 
-            {/* <p className={styles.text}>
-                {text}
-            </p> */}
-
-           
-
-            {/* <div>
-                <span>Have an invite text? </span>
-                <Link to={'/login'}>Sign in</Link>
-            </div> */}
         </div>
     )
 }

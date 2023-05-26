@@ -13,13 +13,13 @@ const Home = () => {
     const navigate = useNavigate()
 
     const redirectToRegistration = (e) => {
-        navigate("/register")
+        navigate("/authenticate")
     }
 
     const options = {
         icon: icon,
         heading: "Welcome to Codershouse",
-        btn: "Get Your username"
+        btn: "Let's Go"
     }
 
     const isInvite = {
@@ -48,8 +48,8 @@ const Home = () => {
                 </div>
 
                 <div className={styles.signinWrapper}>
-                    <span style={isInvite}>Have an invite text?</span>
-                    <Link style={signinStyle} to={'/login'}>Sign in</Link>
+                    {/* <span style={isInvite}>Have an invite text?</span> */}
+                    {/* <Link style={signinStyle} to={'/login'}>Sign in</Link> */}
                 </div>
 
             </Card>

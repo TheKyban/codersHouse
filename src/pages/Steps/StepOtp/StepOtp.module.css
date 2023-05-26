@@ -1,0 +1,12 @@
+.cardWrapper {
+    composes: cardWrapper from '../../../App.module.css';
+    margin-top: calc(6rem + 60px + 20px);
+}
+
+.actionButtonWrap {
+    composes: actionButtonWrap from '../../../App.module.css';
+}
+
+.bottomParagraph {
+    composes: bottomParagraph from '../../../App.module.css';
+}
