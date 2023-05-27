@@ -9,9 +9,10 @@ import Rooms from './pages/Rooms/Rooms'
 
 import './App.css'
 
+import { useSelector } from 'react-redux'
+
 function App() {
-  const isAuth = false
-  const activated = false
+
 
   return (
     <BrowserRouter>
@@ -20,14 +21,14 @@ function App() {
       <Routes>
 
         {/* Guest */}
-        <Route path='/' element={<Guest isLogged={isAuth} Component={Home} />} />
-        <Route path='/authenticate' element={<Guest isLogged={isAuth} Component={Authenticate} />} />
+        <Route path='/' element={<Guest Component={Home} />} />
+        <Route path='/authenticate' element={<Guest Component={Authenticate} />} />
 
         {/* SemiProtected */}
-        <Route path='/activate' element={<SemiProtected isLogged={isAuth} isActivated={activated} />} />
+        <Route path='/activate' element={<SemiProtected />} />
 
         {/* Protected */}
-        <Route path='/rooms' element={<Protected isLogged={isAuth} isActivated={activated} />} />
+        <Route path='/rooms' element={<Protected />} />
 
       </Routes>
 
@@ -40,21 +41,24 @@ function App() {
  * Guest
  */
 
-const Guest = ({ isLogged, isActivated, Component }) => {
+const Guest = ({ Component }) => {
+  let { isAuth, user } = useSelector(state => state.auth)
+
   const navitate = useNavigate()
 
   useEffect(() => {
     /**
      * if user logged but not activated
      */
-    if (isLogged && !isActivated) navitate("/activate")
+    // if (isAuth && !user.activated) navitate("/activate")
+    if (isAuth) navitate("/activate")
 
     /**
      * if user logged and activated
      */
-    if (isLogged && isActivated) navitate("/rooms")
-  }, [])
-  return !isLogged && <Component />
+    if (isAuth && user.activated) navitate("/rooms")
+  }, [isAuth, user])
+  return !isAuth && <Component />
 }
 
 
@@ -62,7 +66,9 @@ const Guest = ({ isLogged, isActivated, Component }) => {
  * Semi Protected
  */
 
-const SemiProtected = ({ isLogged, isActivated }) => {
+const SemiProtected = ({ }) => {
+  let { isAuth, user } = useSelector(state => state.auth)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -70,19 +76,19 @@ const SemiProtected = ({ isLogged, isActivated }) => {
      * if user not logged in
      */
 
-    if (!isLogged) navigate("/")
+    if (!isAuth) navigate("/")
 
     /**
      * if user logged and Activated
      */
 
-    if (isLogged && isActivated) navigate("/rooms")
-  }, [])
+    if (isAuth && user.activated) navigate("/rooms")
+  }, [isAuth, user])
 
   /**
    * if user not Activated
    */
-  return (isLogged && !isActivated) && <Activate />
+  return (isAuth && !user.activated) && <Activate />
 }
 
 
@@ -90,7 +96,9 @@ const SemiProtected = ({ isLogged, isActivated }) => {
  * Protected
  */
 
-const Protected = ({ isLogged, isActivated }) => {
+const Protected = ({ }) => {
+  let { isAuth, user } = useSelector(state => state.auth)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -98,17 +106,17 @@ const Protected = ({ isLogged, isActivated }) => {
      * if user not logged in
     */
 
-    if (!isLogged) navigate("/")
+    if (!isAuth) navigate("/")
 
     /**
      * if user logged but not activated
      */
 
-    if (isLogged && !isActivated) navigate("/activate")
+    if (isAuth && !user.activated) navigate("/activate")
 
-  }, [])
+  }, [isAuth, user])
 
-  return (isLogged && isActivated) && <Rooms />
+  return (isAuth && user.activated) && <Rooms />
 }
 
 export default App
