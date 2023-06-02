@@ -11,8 +11,10 @@
 }
 
 .cardWrapper {
+    height: calc(100vh - 200px);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
+
 }

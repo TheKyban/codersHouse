@@ -20,7 +20,6 @@ const Activate = () => {
     const Step = steps[step]
     return (
         <div>
-            Activate
             <Step onNext={onNext} />
         </div>
     )

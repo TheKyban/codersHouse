@@ -19,6 +19,7 @@ const Phone = ({ onNext }) => {
         /**
          * Server request
          */
+        if (!phoneNumber) return;
         const { data } = await sendOtp({ 'phone': phoneNumber })
 
         dispatch(setHashOtp({ phone: data.phone, hash: data.hash }))

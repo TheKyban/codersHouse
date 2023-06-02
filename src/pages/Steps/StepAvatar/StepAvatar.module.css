@@ -1,0 +1,42 @@
+.cardWrapper {
+    composes: cardWrapper from '../../../App.module.css';
+}
+
+.actionButtonWrap {
+    composes: actionButtonWrap from '../../../App.module.css';
+    margin-top: 15px;
+}
+
+.bottomParagraph {
+    composes: bottomParagraph from '../../../App.module.css';
+    width: 100%;
+    margin-top: -25px;
+}
+
+.avatarWrapper {
+    width: 120px;
+    height: 120px;
+    border: 8px solid #0077FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.avatar {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.avatarLabel {
+    color: #0077FF;
+    font-size: 18px;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.avatarInput {
+    display: none;
+}

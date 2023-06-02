@@ -1,0 +1,105 @@
+.modelMask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.438);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modelHeading {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.modelBody {
+    width: 50%;
+    max-width: 500px;
+    background-color: #1d1d1d;
+    border-radius: 20px;
+    position: relative;
+}
+
+.modelHeader {
+    padding: 30px;
+    border-bottom: 2px solid #262626;
+}
+
+.roomTypeHeading {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.roomtypes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.typeBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.active {
+    background-color: #262626;
+}
+
+.modelFooter {
+    text-align: center;
+    padding: 30px;
+}
+
+.modelFooter h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.footerBotton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    background-color: #20BD5F;
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: bold;
+    margin: auto;
+    gap: 10px;
+    padding: 7px 20px;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+
+.footerBotton:hover {
+    background-color: #0b8a3e;
+}
+
+.exit {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+
+    cursor: pointer;
+}

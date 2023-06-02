@@ -1,6 +1,9 @@
 html {
-    box-sizing: border-box;
     font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body,
@@ -40,4 +43,9 @@ body {
     width: 1200px;
     max-width: 90%;
     margin: 0 auto;
+}
+
+button {
+    outline: none;
+    border: none;
 }
