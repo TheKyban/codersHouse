@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../../../components/shared/Button/Button'
 import Card from '../../../components/shared/Card/Card'
 import styles from './StepAvatar.module.css'
@@ -9,6 +9,7 @@ import { activate } from '../../../http'
 import { setAuth } from '../../../store/authSlice'
 import karna from '../../../images/karna.png'
 import Loader from '../../../components/shared/Loader/Loader'
+import { useNavigate } from 'react-router-dom'
 
 
 const StepAvatar = ({ onNext }) => {
@@ -18,6 +19,7 @@ const StepAvatar = ({ onNext }) => {
   const [image, setImage] = useState(karna)
   const [loading, setLoading] = useState(false)
   const [unMount, setUnMount] = useState(false)
+  const navigate = useNavigate()
 
   const sumbitProfile = async () => {
     if (!avatar || !name) return;
@@ -25,9 +27,9 @@ const StepAvatar = ({ onNext }) => {
 
     try {
       const { data } = await activate({ name, avatar })
-      if (data.auth) {
-        if (!unMount) {
-          dispatch(setAuth(data))
+      if (data.auth === true) {
+        if (unMount) {
+          await dispatch(setAuth(data))
         }
       }
     } catch (err) {

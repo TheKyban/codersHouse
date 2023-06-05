@@ -90,7 +90,7 @@ const SemiProtected = ({ }) => {
      */
 
     if (isAuth && user.activated) navigate("/rooms")
-  }, [isAuth, user])
+  }, [isAuth, user.activated])
 
   /**
    * if user not Activated
@@ -121,7 +121,7 @@ const Protected = ({ Component }) => {
 
     if (isAuth && !user.activated) navigate("/activate")
 
-  }, [isAuth, user])
+  }, [isAuth, user.activated])
 
   return (isAuth && user.activated) && <Component />
 }
